@@ -6,10 +6,46 @@
 <body>
     <form>
         <div>
-            <label>Enter Common Name (URL of host machine)</label>
-            <input type="text" id="item" autofocus>
+            <label>Common Name: </label>
+            <input type="text" id="CN" autofocus>
+        </div>
+        <div>
+            <label>Organization Name: </label>
+            <input type="text" id="O">
+        </div>
+        <div>
+            <label>Organizational Unit: </label>
+            <input type="text" id="OU">
+        </div>
+        <div>
+            <label>City: </label>
+            <input type="text" id="L">
+        </div>
+        <div>
+            <label>State/Province/Region (fully written out): </label>
+            <input type="text" id="S">
+        </div>
+        <div>
+            <label>Country</label>
+            <input type="text" id="C">
+        </div>
+        <div>
+            <label>Email Address: </label>
+            <input type="text" id="mail">
         </div>
         <button type="Submit">Generate commands</button>
     </form>
+
+    <script>
+    const electron = require('electron');
+    const {ipcRenderer} = electron;
+
+    const form = document.querySelector('form');
+    form.addEventListener('submit', submitForm);
+    function submitForm(e){
+        e.preventDefault();
+        console.log(123);
+    }
+    </script>
 </body>
 </html>
