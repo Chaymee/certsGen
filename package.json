@@ -1,0 +1,15 @@
+{
+  "name": "certsapp",
+  "version": "1.0.0",
+  "description": "app for generating certificates in multiple different manners",
+  "main": "main.js",
+  "dependencies": {
+    "electron": "^6.0.7"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "Jamieson Walker",
+  "license": "ISC"
+}
