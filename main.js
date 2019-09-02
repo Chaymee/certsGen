@@ -2,7 +2,7 @@ const electron = require('electron');
 const url = require('url');
 const path = require('path');
 
-const {app, BrowserWindow, Menu} = electron;
+const {app, BrowserWindow, Menu, ipcMain} = electron;
 
 let mainWindow;
 let addWindow
@@ -50,12 +50,17 @@ function createNewWindow(){
         slashes: true
     }));
     // Clear memory from closed window
-    /*
-    createNewWindow.on('closed', function(){
-        createNewWindow = null;
+    newWindow.on('closed', function(){
+        newWindow = null;
     });
-    */
 };
+
+// Catch payloade from new certificate window
+ipcMain.on('cert:new', function(e, payload){
+    console.log(payload)
+    mainWindow.webContents.send('cert:new', payload);
+    newWindow.close();
+});
 
 // Create Menu template
 const mainMenuTemplate = [

@@ -44,7 +44,15 @@
     form.addEventListener('submit', submitForm);
     function submitForm(e){
         e.preventDefault();
-        console.log(123);
+        const CN = document.querySelector('#CN').value;
+        const Org = document.querySelector('#O').value;
+        const OrgUnit = document.querySelector('#OU').value;
+        const City = document.querySelector('#L').value;
+        const State = document.querySelector('#S').value;
+        const Country = document.querySelector('#C').value;
+        const Email = document.querySelector('#mail').value;
+        const payload = [CN, Org, OrgUnit, City, State, Country, Email];
+        ipcRenderer.send('cert:new', payload);
     }
     </script>
 </body>
