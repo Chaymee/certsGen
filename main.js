@@ -57,7 +57,8 @@ function createNewWindow(){
 
 // Catch payloade from new certificate window
 ipcMain.on('cert:new', function(e, payload){
-    console.log(payload)
+    //console.log(payload)
+    generateCommands(payload);
     mainWindow.webContents.send('cert:new', payload);
     newWindow.close();
 });
@@ -112,3 +113,7 @@ if(process.env.NODE_ENV !== 'production'){
         ]
     })
 }
+
+function generateCommands(payload) {
+    console.log(payload);
+};

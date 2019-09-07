@@ -6,5 +6,16 @@
 <body>
     <h1>Certificate Generator</h1>
     <h2>testing</h2>
+
+    <script>
+        const electron = require('electron');
+        const {ipcRenterer} = electron;
+        const ul = document.querySelector('u;');
+
+        // catch add item
+        ipcRenterer.on('cert:new', function(e, payload){
+            
+        })
+    </script>
 </body>
 </html>
