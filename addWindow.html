@@ -6,8 +6,12 @@
 <body>
     <form>
         <div>
+            <label>Name for Certificate: </label>
+            <input type="text" id="CertName" autofocus>
+        </div>
+        <div>
             <label>Common Name: </label>
-            <input type="text" id="CN" autofocus>
+            <input type="text" id="CN">
         </div>
         <div>
             <label>Organization Name: </label>
@@ -36,6 +40,10 @@
         <button type="Submit">Generate commands</button>
     </form>
 
+    <!--
+        Add options here to add alt name data 
+    -->
+
     <script>
     const electron = require('electron');
     const {ipcRenderer} = electron;
@@ -44,6 +52,7 @@
     form.addEventListener('submit', submitForm);
     function submitForm(e){
         e.preventDefault();
+        const CertName = document.querySelector('#CertName').value;
         const CN = document.querySelector('#CN').value;
         const Org = document.querySelector('#O').value;
         const OrgUnit = document.querySelector('#OU').value;
@@ -51,7 +60,17 @@
         const State = document.querySelector('#S').value;
         const Country = document.querySelector('#C').value;
         const Email = document.querySelector('#mail').value;
-        const payload = [CN, Org, OrgUnit, City, State, Country, Email];
+        const payload2 = [CN, Org, OrgUnit, City, State, Country, Email];
+        const payload = {
+            "CertName" : CertName,
+            "CN" : CN,
+            "Org" : Org,
+            "OrgUnit" : OrgUnit,
+            "City" : City,
+            "State" : State,
+            "Country" : Country,
+            "Email" : Email
+        };
         ipcRenderer.send('cert:new', payload);
     }
     </script>

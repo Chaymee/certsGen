@@ -2,6 +2,8 @@ const electron = require('electron');
 const url = require('url');
 const path = require('path');
 
+const USERNAME = 'ADDMFID'
+
 const {app, BrowserWindow, Menu, ipcMain} = electron;
 
 let mainWindow;
@@ -116,4 +118,10 @@ if(process.env.NODE_ENV !== 'production'){
 
 function generateCommands(payload) {
     console.log(payload);
+    var acf2Gencert;
+    // ACF2 command stringn for gencert
+    acf2CertAuth = 'ACF2 GENCERT CERTAUTH.${ ESMMS } SUBJsdn(CN=\'${ payload.CN})\'
+     OU=\'$ '
+    acf2Server = 'ACF2 GENCERT CERTAUTH.${ USERNAME }  ';
+
 };
