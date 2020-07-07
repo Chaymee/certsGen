@@ -4,7 +4,7 @@
   "description": "app for generating certificates in multiple different manners",
   "main": "main.js",
   "dependencies": {
-    "electron": "^6.0.7"
+    "electron": "^9.1.0"
   },
   "devDependencies": {},
   "scripts": {
